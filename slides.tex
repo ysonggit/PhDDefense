@@ -118,7 +118,7 @@ USC
     \item \textbf{Basic Idea}:\\
     Explicitly represent what the robot knows as an information state (\textit{I-state}).
     \item \textbf{Intuition}:\\
-    Accelerate time-consuming operations by maintaining only an \textcolor[rgb]{1.00,0.00,0.00}{overapproximation} of the true
+    Accelerate time-consuming operations by maintaining only an \textcolor[rgb]{1.00,0.00,0.00}{over-approximation} of the true
     I-state, and constraining this approximation
     to have a simple geometric form.\\
     \end{itemize}
@@ -864,7 +864,7 @@ It make its decisions by maintaining an \emph{I-state} $\eta_k$.
       \item {\textcolor{red}{Root}: Robot who has the highest authority}
       \item {\textcolor{blue}{Descendant}: Robot selects the neighbor who sends
           the highest authority and has matching with it as its parent}
-      \item {\textcolor{orange}{Orphan}: Robot who has no parent}
+      \item {\textcolor{orange}{Orphan}: Robot who has no matching}
       \end{itemize}  
       \footnotesize{[right] Assume each robot has maximum $2$ outgoing
         edges.}
