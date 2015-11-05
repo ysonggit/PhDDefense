@@ -1,3 +1,3 @@
-Slides For Ph.D. Proposal
+Slides For Ph.D. Defense
 ===============
 
