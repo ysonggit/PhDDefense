@@ -1,0 +1,30 @@
+\begin{frame}{Experimental Results}{Computation Time}
+  For each environment, we
+  \begin{itemize}
+  \item randomly place $N = 300$ landmarks 
+  \item run the  experiments $10$ times
+  \end{itemize} 
+  \begin{block}{}
+    \small{We compare the average time (in seconds) required to compute the
+      approximated \emph{I-state} compared to the high-fidelity polygonal
+      representation of the exact \emph{I-state}.}
+  \end{block}
+\begin{table}
+  \footnotesize\centering
+    \begin{tabular}{cccc} 
+    \hline
+    Range & \multicolumn{3}{c}{Computation Time (s)}  \\
+    Space & Obstacle-free & Obstacle-cluttered & Office-like\\
+    \hline
+    $\mathcal{R}_{disk}$ & 0.163  & 0.162   & 0.292  \\ 
+    \hline
+    $\mathcal{R}_{rect}$ & 0.396   & 0.441  & 0.415  \\
+    \hline
+    $\mathcal{R}_{dblrect}$ & 1.021  & 1.122  & 1.491  \\
+    \hline
+    $\mathcal{I}$ & 10.074  & 10.218  & 26.895  \\
+    \hline
+    \end{tabular}
+    \caption{\scriptsize{Average computation time in three environments.}}
+\end{table}
+\end{frame}

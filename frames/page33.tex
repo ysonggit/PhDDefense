@@ -1,0 +1,21 @@
+\begin{frame}{1.Construct Authority Tree}{Decide to be root or descendant}
+  \textbf{Key Idea:} Each robot forms an authority containing only its
+  own ID, compares it with the authorities of remaining messages. The
+  robots use these authorities to establish a collection of authority
+  trees
+  \begin{columns}[T] % align columns
+    \begin{column}{.45\textwidth}
+      \begin{itemize}
+      \item {\textcolor{red}{Root}: Robot who has the highest authority}
+      \item {\textcolor{blue}{Descendant}: Robot selects the neighbor who sends
+          the highest authority and has matching with it as its parent}
+      \item {\textcolor{orange}{Orphan}: Robot who has no matching}
+      \end{itemize}  
+      \footnotesize{[right] Assume each robot has maximum $2$ outgoing
+        edges.}
+    \end{column}%
+    \begin{column}{.5\textwidth}
+       \input{tikzfigs/authtree.tex}
+    \end{column}
+  \end{columns}
+\end{frame}

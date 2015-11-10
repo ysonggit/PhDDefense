@@ -1,0 +1,14 @@
+\begin{frame}{Role Function}
+  \begin{definition}
+    \small{Given a lattice graph $G=(V, E)$ and a set of robots $R = \{
+    r_1, \ldots, r_n \}$, $R$ \textbf{satisfies} $G$ if
+    there exists a role function $f: R \rightarrow V$ that preserves
+    the neighborhood structure of $G$.
+    \\
+    Specifically, for any $i$ and $j$, if $r_i$ and $r_j$ are neighbors, 
+    there must exist an edge
+    $e_{v}^w: \edge{f(r_i)}{}{f(r_j)}$ in $E$, such that
+    $ T(r_j) = T(r_i) T(e_{v}^w)$.}
+  \end{definition}
+  \input{tikzfigs/satisfy.tex}
+\end{frame}

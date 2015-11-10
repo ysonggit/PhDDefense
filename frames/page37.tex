@@ -1,0 +1,19 @@
+\begin{frame}{Bounded Movement}{}
+  \textbf{Goal: Keep descendant stay in the range of its parent}
+    \begin{columns}[T] % align columns
+      \begin{column}{.5\textwidth}
+        \begin{itemize}
+        \item \small{Descendant can reach anywhere in set $P$
+            (\textcolor{blue}{blue circle}) at next stage}
+        \item \small{Descendant is guaranteed to be observed in set $O$
+            (\textcolor{red}{Red circle}) by its parent at next stage}
+        \item \small{The real destination for descendant is the closest point
+            on the boundary of the intersection ($O\cap P$) to the
+            assigned destination}
+        \end{itemize}
+      \end{column}%
+      \begin{column}{.4\textwidth}
+        \input{tikzfigs/motion.tex}     
+      \end{column}%
+    \end{columns} 
+\end{frame}

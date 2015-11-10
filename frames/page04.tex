@@ -1,0 +1,12 @@
+\begin{frame}{Robot Model (Cont'd)}
+  \begin{itemize}
+  \item Observation space: $Y = \mathbb{R}^2$
+  \item Observation function: $h : X \to \pow(Y) $
+  \item Observation Preimage: the set of states from which a given observation
+    $y_k \in Y$ can be obtained
+        \begin{equation}
+          H(y_k) = \left\{ x_k \in X \mid y_k \in h(x_k), y_k \in Y \right\}
+        \end{equation}
+        \input{tikzfigs/preimage.tex}
+  \end{itemize}
+\end{frame}

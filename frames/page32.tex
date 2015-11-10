@@ -1,0 +1,17 @@
+\begin{frame}{Authority}{Level of Importance}
+  \textbf{Define authority and comparison operator}
+  \begin{definition}
+    \small{An \textbf{authority} is an ordered list of robot IDs
+      $$(\id_1, \ldots, \id_k)$$
+      The first ID in the list, $\id_1$ is called the \textbf{root} ID.
+      The final ID in the list, $\id_k$ is called the \textbf{sender} ID.}
+  \end{definition}
+  \begin{definition}
+    \small{Authority $A_2$ is \textbf{higher than} $A_1$ if:}
+    \begin{itemize}
+    \item \small{root ID of $A_2 >$ root ID of $A_1$, or}
+    \item \small{length of $A_2 <$  length of $A_1$ if they have the same root, or}
+    \item \small{sender ID of $A_2 >$ sender ID of $A_1$ if they have the same root and length}
+    \end{itemize}
+  \end{definition}
+\end{frame}

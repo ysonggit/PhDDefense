@@ -1,0 +1,33 @@
+\begin{frame}{Evaluation Criteria}
+  \small{\begin{itemize}
+  \item \textbf{Efficiency}\\
+    %\begin{definition}
+    Call a robot $r_i$ \textbf{static} at time $t$ if its pose $p_i$
+    remains the same at all future times.
+   % $$p_i(t') = p_i(t) \quad \mbox {for all } t' > t$$    
+  %\end{definition}
+    Define the \textbf{execution time} $\bar{t}$ of the system as the
+    smallest time when all the robots reach static positions
+  \item \textbf{Quality} \\
+    When all robots reach static positions, for a robot $r_i$ with
+    $N_i$ neighbors and $E_i$ outgoing edges, define a non-fulfillment
+    ratio $\Gamma$ to measure the overall lattice quality
+    $$\Gamma = \dfrac{1}{n}\sum\limits_{i=1}^n \frac{E_i - N_i}{E_i}$$
+  \end{itemize}
+  }
+  \begin{columns}[T] 
+    \begin{column}{.4\textwidth}
+        \input{tikzfigs/hexlg.tex}
+    \end{column}%
+    \begin{column}{.5\textwidth}
+      \begin{figure}
+        \centering
+        \includegraphics[width=0.6\linewidth]{figs/bad-hexagon}
+      \end{figure}
+      \begin{figure}
+        \centering
+        \includegraphics[scale=0.65]{figs/good-hexagon}
+      \end{figure}
+    \end{column}%
+  \end{columns}
+\end{frame}

@@ -1,0 +1,20 @@
+\begin{frame}{Robot Model}{}
+  \begin{columns}[T] % align columns
+    \begin{column}{.55\textwidth}
+      \begin{itemize}
+      \item Differential drive robots
+      \item Each robot has a unique \textbf{ID}
+      %\item Use a vector $p = [x, y,
+       % \theta]^T$ to represent robot's \textbf{pose}
+      \item Each robot has a \textbf{range} within which it can
+        sense and communicate with other robots
+      \item Each robot gets \textbf{observation} of its neighbors'
+        IDs and relative poses in its body frame
+      \end{itemize}
+    \end{column}%
+    % right column
+    \begin{column}{.45\textwidth}
+        \input{tikzfigs/robotmodel.tex}
+    \end{column}%
+  \end{columns}
+\end{frame}

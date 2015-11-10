@@ -1,0 +1,19 @@
+\begin{frame}{Information Space}
+  \begin{definition}
+    \small{An information state (I-state) $\eta$ is a set containing all possible
+      states consistent with robot's sensor and action history.}
+  \end{definition}
+  \begin{definition}
+    \small{The \emph{information space} (I-space) $\Ispace$ is the
+      powerset of $X$, which contains all possible I-states.}
+  \end{definition}
+  \begin{columns}
+    \begin{column}{0.4\textwidth}
+      2. Observation update function:
+      $$\eta_{k+1} =   X_{k+1}(\eta_{k}, u_k) \cap H(y_{k})$$
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \input{tikzfigs/istateobsv.tex}
+    \end{column}
+  \end{columns}  
+ \end{frame}

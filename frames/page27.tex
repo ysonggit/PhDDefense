@@ -1,0 +1,19 @@
+\begin{frame}{Input: Lattice Graph}
+  \begin{definition}
+    A \textbf{lattice graph} is a strongly connected directed
+      multi-graph in which each edge $e$ is labeled with a rigid body
+      transformation $T(e)$ and each $\edge{v}{T(e)}{w}$ has an
+      inverse edge $\edge{w}{T(e)^{-1}}{v}$.  
+    \end{definition}
+    \begin{columns}[T] % align columns
+      \begin{column}{.45\textwidth}
+        \input{tikzfigs/sqlg.tex}
+      \end{column}%
+      \begin{column}{.45\textwidth}
+        \begin{figure}
+          \centering
+          \includegraphics[scale=1]{figs/squarelattice}
+        \end{figure}
+      \end{column}%
+    \end{columns}
+\end{frame}

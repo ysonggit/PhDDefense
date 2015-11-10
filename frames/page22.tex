@@ -1,0 +1,30 @@
+\begin{frame}{Experimental Results}{Approximation Ratio}
+  For each environment, we
+  \begin{itemize}
+  \item randomly place $N = 300$ landmarks 
+  \item run the  experiments $10$ times
+  \end{itemize} 
+  \begin{block}{}
+    \small{We compare the average approximation ratio of using each
+      approximation methods to approximate the true \emph{I-state}}
+    $$\frac{1}{k} \sum_{i=1}^k \frac{\text{AREA}(\eta_i)}{\text{AREA}(A(\eta_i))}$$
+  \end{block}
+\begin{table}
+  \footnotesize\centering
+    \begin{tabular}{cccc} 
+    \hline
+    Range  & \multicolumn{3}{c}{Approximation  Ratio}  \\
+    Space  & Obstacle-free & Obstacle-cluttered & Office-like\\
+    \hline
+    $\mathcal{R}_{disk}$ & 0.155  & 0.155   & 0.220 \\ 
+    \hline
+    $\mathcal{R}_{rect}$  & 0.642   & 0.632  & 0.661 \\
+    \hline
+    $\mathcal{R}_{dblrect}$ & 0.684 & 0.691  & 0.720 \\
+    \hline
+    $\mathcal{I}$ & 1.000  & 1.000  & 1.000 \\
+    \hline
+    \end{tabular}
+    \caption{\scriptsize{Average approximation ratio in three environments.}}
+\end{table}
+\end{frame}

@@ -1,0 +1,19 @@
+\begin{frame}{Self-Consistent Lattice Graph}
+  \begin{definition}
+    \small{Given a range $\phi > 0$, call a lattice graph
+      \textit{self-consistent} for this range if, for any two paths with the
+      same starting node,
+      $$\lgpath{v}{T(e_v^{k})}{T(e_m^{w})}{w}, \text{ and }\lgpath{v}{T(e_v^{j})}{T(e_n^{u})}{u},$$
+      for which the distance between two ending nodes $w$ and $u$ is
+      less than or equal to $\phi$, there exist edges between $w$ and
+      $u$ with right transformations.}
+  \end{definition}
+  \begin{columns}[T] % align columns
+    \begin{column}{.45\textwidth}
+        \input{tikzfigs/selfconsist.tex}
+    \end{column}%
+    \begin{column}{.45\textwidth}
+        \input{tikzfigs/nonselfconsist.tex}
+    \end{column}%
+  \end{columns}
+\end{frame}

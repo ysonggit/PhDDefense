@@ -104,758 +104,113 @@ USC
 
 \section{CGA for Robot Planning [ICRA 2012]}
 \subsection[Overview]{Overview}
-\begin{frame}{Constrained Geometric Approximation}
-\begin{columns}
-  \begin{column}{.65\textwidth}
-    \begin{itemize}
-    \item \textbf{Goal}:\\
-    For an extremely simple robot with:
-    \begin{itemize}
-    \item computation limitations
-    \item moving and sensing uncertainties
-    \end{itemize}
-    represent and reason about uncertainty in its own states efficiently.\\
-    \item \textbf{Basic Idea}:\\
-    Explicitly represent what the robot knows as an information state (\textit{I-state}).
-    \item \textbf{Intuition}:\\
-    Accelerate time-consuming operations by maintaining only an \textcolor[rgb]{1.00,0.00,0.00}{over-approximation} of the true
-    I-state, and constraining this approximation
-    to have a simple geometric form.\\
-    \end{itemize}
-  \end{column}
-  \begin{column}{.35\textwidth}
-    \begin{figure}
-    \includegraphics[scale=0.2]{figs/srvq.jpg}
-    \end{figure}
-    SRV-1 Surveyor Robot
-  \end{column}
-\end{columns}
-\end{frame}
+\input{frames/page01.tex}
 
-\begin{frame}{Prior Work}
-Related work
-\begin{itemize}
-\item Probabilistic representations: J. van den Berg,
-  P. Abbeel, and K. Goldberg (LQG-MP, IJRR 2011)
-\item Minimal Representations: B. Tovar, L. Guilamo, S. M. LaValle (GNT, WAFR 2004)
-\item Geometric over-approximation: J. M. O'Kane (Wireless Netw 2012)
-\end{itemize}
-Contributions
-\begin{itemize}
-\item Define the range space $\mathcal{R}$ with formulation of the operations
-\item Design algorithms for double-rectangle range space $\mathcal{R}_{drect}$
-\item Conduct experiments to evaluate different range spaces
-\end{itemize}
-\end{frame}
+\input{frames/page02.tex}
 
-\begin{frame}{Robot Model}
-Assume that the robot could not observe its real state directly.  
-It make its decisions by maintaining an \emph{I-state} $\eta_k$.
-\begin{itemize}
-\item State space: $X = \mathbb{R}^2$,  $X_{obt} \cup X_{free} \subseteq X$
-\item Action space: $U = \mathbb{R}^2$, apply a bounded noise $\theta_k$ to the
-  action $u_k \in U$
-\item Set valued state transition function: $F(x, u)$
-  \begin{equation}
-    \label{eq:state-trans}
-    F(x_k, u_k) = \left\{
-      x_k + u_k + \theta_k
-      \mid
-      \theta_k \in \Theta(u_k)
-    \right\} \cap X_{free}
-  \end{equation}
-  \begin{columns}
-    \begin{column}{0.4\textwidth}
-      \begin{figure}
-        \centering
-        \includegraphics[scale=0.2]{figs/istate.jpg}
-        \caption{\scriptsize{The transition of robot's state $x_k$ with
-            uncertainty [\emph{Planning Algorithms}, S. LaValle, 2006].}}
-      \end{figure}
-    \end{column}
-    \begin{column}{0.5\textwidth}
-      \begin{figure}
-        \centering
-        \includegraphics[scale=0.55]{figs/noisemodel}
-        \caption{\scriptsize{The noise model $\Theta(u_k)$ involves bounded
-            angular error $\delta_{ang}$ and bounded translational error
-            $\delta_{trans}||u||$.}}
-        \label{fig:noiseModel}
-      \end{figure}
-    \end{column}
-  \end{columns}
-\end{itemize}
-\end{frame}
+\input{frames/page03.tex}
 
-\begin{frame}{Robot Model (Cont'd)}
-  \begin{itemize}
-  \item Observation space: $Y = \mathbb{R}^2$
-  \item Observation function: $h : X \to \pow(Y) $
-  \item Observation Preimage: the set of states from which a given observation
-    $y_k \in Y$ can be obtained
-        \begin{equation}
-          H(y_k) = \left\{ x_k \in X \mid y_k \in h(x_k), y_k \in Y \right\}
-        \end{equation}
-        \input{tikzfigs/preimage.tex}
-  \end{itemize}
-\end{frame}
+\input{frames/page04.tex}
 
 \subsection[I-Space]{Information Space}
-\begin{frame}{Information Space}
-  \begin{definition}
-  \small{An information state (I-state) $\eta$ is a set containing all possible
-    states consistent with robot's sensor and action history.}
-  \end{definition}
-  \begin{definition}
-  \small{The \emph{information space} (I-space) $\Ispace$ is the
-  powerset of $X$, which contains all possible I-states.}
-  \end{definition}
-  \begin{columns}
-    \begin{column}{0.4\textwidth}
-       1. Action update function:
-       $$X_{k+1}(\eta_{k}, u_k) =  \bigcup_{x_k \in \eta_k} F(x_k, u_k)$$
-     \end{column}
-    \begin{column}{0.5\textwidth}
-      \input{tikzfigs/istate.tex}
-    \end{column}
-  \end{columns}
-\end{frame}
+\input{frames/page05.tex}
 
-\begin{frame}{Information Space}
-  \begin{definition}
-    \small{An information state (I-state) $\eta$ is a set containing all possible
-      states consistent with robot's sensor and action history.}
-  \end{definition}
-  \begin{definition}
-    \small{The \emph{information space} (I-space) $\Ispace$ is the
-      powerset of $X$, which contains all possible I-states.}
-  \end{definition}
-  \begin{columns}
-    \begin{column}{0.4\textwidth}
-      2. Observation update function:
-      $$\eta_{k+1} =   X_{k+1}(\eta_{k}, u_k) \cap H(y_{k})$$
-    \end{column}
-    \begin{column}{0.5\textwidth}
-      \input{tikzfigs/istateobsv.tex}
-    \end{column}
-  \end{columns}  
- \end{frame}
+\input{frames/page06.tex}
 
-\begin{frame}{Simulation: Navigation Task}
- \begin{block}{Ultimate Objective} 
-   Form a plan $\pi$ for the robot to execute using the information available in
-   the I-space.
- \end{block}
+\input{frames/page07.tex}
 
-\textbf{In a navigation task, we assume:}
-\begin{itemize}
-\item A point robot follows predefined waypoints guided by centroid point of the
-  (approximated) I-state
-\item Robot can detect presence but not distance to the landmarks
-\item Landmarks are pseudo-randomly generated
-\item Initial (approximated) I-state is given
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Example}{Navigation Task using I-state}
-  \begin{center}
-    \includemovie[toolbar,poster,autoplay]{12cm}{6cm}{videos/clutter_istate.mp4}
-  \end{center}
-\end{frame} 
+\input{frames/page08.tex} % video
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection[Range Space]{Contribution: Range Space}
-\begin{frame}{Contribution: Range Space}
-  \begin{definition}{\textbf{A range space}}
-    $\mathcal{R} \subseteq \mathcal{I}$ is a set of I-states, equipped with two
-    operations:
-  \end{definition}
-  \begin{columns}
-    \begin{column}{.5\textwidth}
-      \begin{enumerate}
-      \item \emph{Approximate action update function} $T: \mathcal{R} \times U \to
-        \mathcal{R}$:
-        $$\bigcup_{x_k \in \eta_k} F(x_k, u_k) \subseteq T(A(\eta_k), u_k)$$
-      \item \emph{Approximate observation update function} $O: \mathcal{R} \times
-        Y \to \mathcal{R}$:
-        $$\eta_k \cap H(y_k) \subseteq O(A(\eta_k), u_k)$$
-      \end{enumerate}
-      \textcolor{scred}{Intuition: always over-approximate I-state:
-        $\eta_k \subseteq A(\eta_k)$}
-    \end{column}
-    \begin{column}{.4\textwidth}
-        \input{tikzfigs/rangespace.tex}
-    \end{column}
-\end{columns}
-\end{frame}
+\input{frames/page09.tex}
 
-\begin{frame}{Example}{Rectangle Approximation of I-state}
-  \begin{center}
-    \includemovie[toolbar,poster,autoplay]{12cm}{6cm}{videos/clutter_rect.mp4}
-  \end{center}
-\end{frame}
+\input{frames/page10.tex}
 
-\begin{frame}{Limitation}{Rectangle Approximation of I-state}
-  \textbf{Problem: approximation accuracy}
-   \begin{columns}
-    \begin{column}{0.45\textwidth}
-      \begin{figure}
-        \includegraphics[width=0.5\linewidth]{figs/rect_approx}
-      \end{figure}
-    \end{column}
-    \begin{column}{0.45\textwidth}
-      \begin{figure}
-        \includegraphics[width=0.5\linewidth]{figs/dbrect_approx}
-      \end{figure}
-    \end{column}
-  \end{columns}
-\end{frame}
+
+\input{frames/page11.tex}
 
 \subsubsection[Double-Rectangle Range Space]{Double-Rectangle Range Space}
-\begin{frame}{Double-Rectangle approximated I-state}
-  To improve the approximation quality for non-convex \emph{I-states}, we
-  proposed:
-  \begin{itemize}
-  \item a novel range space of \textcolor[rgb]{1.00,0.00,0.00}{double-rectangle}
-    \begin{equation}
-      \mathcal{R}_{drect} = \{ R_1 \cup R_2 \mid R_1, R_2 \in \mathcal{R}_{rect} \}
-    \end{equation}
-  \item an algorithm to overapproximate a polygon using double-rectangle
-    \begin{center}
-      \input{tikzfigs/drap.tex}
-    \end{center} 
-  \end{itemize}
-  
-\end{frame}
 
-\begin{frame}{Operations on Double-Rectangle Range Space}
-  For a double rectangle approximated \emph{I-state} $A(\eta_k) = R_1 \cup R_2$:
-  \begin{itemize}
-  \item \small{Action Update:\\$T_{drect}\left(A(\eta_k), u_k \right)=DRAP\left(X_{free} \cap [A(\eta_k) \oplus \{ u_k \} \oplus DRAP\left(\Theta(u_k)\right)]\right)$}
-  \item \small{Observation Update:\\$O_{drect}\left(A(\eta_k), y_k\right)=AABB\left(H(y_k) \cap R_1\right)\cup AABB\left(H(y_k) \cap R_2\right)$}
-  \end{itemize}
-  \begin{center}  
-    \input{tikzfigs/dbrect.tex}
-  \end{center}
-\end{frame}
+\input{frames/page12.tex}
 
-\begin{frame}{Simulation}{Double-Rectangle Approximation of I-state}
-  \begin{center}
-    \includemovie[toolbar,poster,autoplay]{12cm}{6cm}{videos/clutter_dbrect.mp4}
-  \end{center}
-\end{frame} 
+\input{frames/page13.tex}
+
+\input{frames/page14.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection[Experiments]{Experiments and Conclusions}
-\begin{frame}{Experimental Results}{Success Rate}
- \small{Comparison with using the true I-state, we conducted experiments using 3
- environments, and 3 range spaces $\mathcal{R}_{disk}$, $\mathcal{R}_{rect}$,
- and  $\mathcal{R}_{drect}$. \\
- In each environment we collect the success rate of completing the navigation
- task. 
- \begin{enumerate}
- \item The number of landmarks $N$: between $5$ and $250$ in increments of 5
- \item For each $N$, run the experiment 15 trials with different landmark
-   distributions by assigning distinct random seeds
- \end{enumerate}
-}
-\begin{figure}
-  \centering
-  \includegraphics[width=0.65\textwidth]{figs/blank}
-\end{figure}
-\end{frame}
+\input{frames/page15.tex}
 
-\begin{frame}{Experimental Results}{Success Rate (Cont'd)}
- \small{Comparison with using the true I-state, we conducted experiments using 3
- environments, and 3 range spaces $\mathcal{R}_{disk}$, $\mathcal{R}_{rect}$,
- and  $\mathcal{R}_{drect}$. \\
- In each environment we collect the success rate of completing the navigation
- task. 
- \begin{enumerate}
- \item The number of landmarks $N$: between $5$ and $250$ in increments of 5
- \item For each $N$, run the experiment 15 trials with different landmark
-   distributions by assigning distinct random seeds
- \end{enumerate}
-}
-\begin{figure}
-  \centering
-  \includegraphics[width=0.67\textwidth]{Data/expnumblank}
-\end{figure}
-\end{frame}
+\input{frames/page16.tex}
 
-\begin{frame}{Experimental Results}{Success Rate (Cont'd)}
- \small{Comparison with using the true I-state, we conducted experiments using 3
- environments, and 3 range spaces $\mathcal{R}_{disk}$, $\mathcal{R}_{rect}$,
- and  $\mathcal{R}_{drect}$. \\
- In each environment we collect the success rate of completing the navigation
- task. 
- \begin{enumerate}
- \item The number of landmarks $N$: between $5$ and $250$ in increments of 5
- \item For each $N$, run the experiment 15 trials with different landmark
-   distributions by assigning distinct random seeds
- \end{enumerate}
-}
-\begin{figure}
-  \centering
-  \includegraphics[width=0.65\textwidth]{figs/clutter}
-\end{figure}
-\end{frame}
+\input{frames/page17.tex}
 
-\begin{frame}{Experimental Results}{Success Rate (Cont'd)}
- \small{Comparison with using the true I-state, we conducted experiments using 3
- environments, and 3 range spaces $\mathcal{R}_{disk}$, $\mathcal{R}_{rect}$,
- and  $\mathcal{R}_{drect}$. \\
- In each environment we collect the success rate of completing the navigation
- task. 
- \begin{enumerate}
- \item The number of landmarks $N$: between $5$ and $250$ in increments of 5
- \item For each $N$, run the experiment 15 trials with different landmark
-   distributions by assigning distinct random seeds
- \end{enumerate}
-}
-\begin{figure}
-  \centering
-  \includegraphics[width=0.67\textwidth]{Data/expnumclutter}
-\end{figure}
-\end{frame}
+\input{frames/page18.tex}
 
-\begin{frame}{Experimental Results}{Success Rate (Cont'd)}
- \small{Comparison with using the true I-state, we conducted experiments using 3
- environments, and 3 range spaces $\mathcal{R}_{disk}$, $\mathcal{R}_{rect}$,
- and  $\mathcal{R}_{drect}$. \\
- In each environment we collect the success rate of completing the navigation
- task. 
- \begin{enumerate}
- \item The number of landmarks $N$: between $5$ and $250$ in increments of 5
- \item For each $N$, run the experiment 15 trials with different landmark
-   distributions by assigning distinct random seeds
- \end{enumerate}
-}
-\begin{figure}
-  \centering
-  \includegraphics[width=0.33\textwidth]{figs/office}
-\end{figure}
-\end{frame}
+\input{frames/page19.tex}
 
-\begin{frame}{Experimental Results}{Success Rate (Cont'd)}
- \small{Comparison with using the true I-state, we conducted experiments using 3
- environments, and 3 range spaces $\mathcal{R}_{disk}$, $\mathcal{R}_{rect}$,
- and  $\mathcal{R}_{drect}$. \\
- In each environment we collect the success rate of completing the navigation
- task. 
- \begin{enumerate}
- \item The number of landmarks $N$: between $5$ and $250$ in increments of 5
- \item For each $N$, run the experiment 15 trials with different landmark
-   distributions by assigning distinct random seeds
- \end{enumerate}
-}
-\begin{figure}
-  \centering
-  \includegraphics[width=0.67\textwidth]{Data/expnumcse}
-\end{figure}
-\end{frame}
+\input{frames/page20.tex}
 
-\begin{frame}{Experimental Results}{Computation Time}
-  For each environment, we
-  \begin{itemize}
-  \item randomly place $N = 300$ landmarks 
-  \item run the  experiments $10$ times
-  \end{itemize} 
-  \begin{block}{}
-    \small{We compare the average time (in seconds) required to compute the
-      approximated \emph{I-state} compared to the high-fidelity polygonal
-      representation of the exact \emph{I-state}.}
-  \end{block}
-\begin{table}
-  \footnotesize\centering
-    \begin{tabular}{cccc} 
-    \hline
-    Range & \multicolumn{3}{c}{Computation Time (s)}  \\
-    Space & Obstacle-free & Obstacle-cluttered & Office-like\\
-    \hline
-    $\mathcal{R}_{disk}$ & 0.163  & 0.162   & 0.292  \\ 
-    \hline
-    $\mathcal{R}_{rect}$ & 0.396   & 0.441  & 0.415  \\
-    \hline
-    $\mathcal{R}_{dblrect}$ & 1.021  & 1.122  & 1.491  \\
-    \hline
-    $\mathcal{I}$ & 10.074  & 10.218  & 26.895  \\
-    \hline
-    \end{tabular}
-    \caption{\scriptsize{Average computation time in three environments.}}
-\end{table}
-\end{frame}
+\input{frames/page21.tex}
 
-\begin{frame}{Experimental Results}{Approximation Ratio}
-  For each environment, we
-  \begin{itemize}
-  \item randomly place $N = 300$ landmarks 
-  \item run the  experiments $10$ times
-  \end{itemize} 
-  \begin{block}{}
-    \small{We compare the average approximation ratio of using each
-      approximation methods to approximate the true \emph{I-state}}
-    $$\frac{1}{k} \sum_{i=1}^k \frac{\text{AREA}(\eta_i)}{\text{AREA}(A(\eta_i))}$$
-  \end{block}
-\begin{table}
-  \footnotesize\centering
-    \begin{tabular}{cccc} 
-    \hline
-    Range  & \multicolumn{3}{c}{Approximation  Ratio}  \\
-    Space  & Obstacle-free & Obstacle-cluttered & Office-like\\
-    \hline
-    $\mathcal{R}_{disk}$ & 0.155  & 0.155   & 0.220 \\ 
-    \hline
-    $\mathcal{R}_{rect}$  & 0.642   & 0.632  & 0.661 \\
-    \hline
-    $\mathcal{R}_{dblrect}$ & 0.684 & 0.691  & 0.720 \\
-    \hline
-    $\mathcal{I}$ & 1.000  & 1.000  & 1.000 \\
-    \hline
-    \end{tabular}
-    \caption{\scriptsize{Average approximation ratio in three environments.}}
-\end{table}
+\input{frames/page22.tex}
 
-\end{frame}
+\input{frames/page23.tex}
 
-\begin{frame}{Conclusions}
-  \begin{enumerate}
-  \item CGA is effective for representing a robot's uncertain information about
-    the current state
-  \item The form of double-rectangle is more accurate in approximating the non-convex
-    \emph{I-state}
-  \item The robot can complete the navigation task using approximated I-state with
-    low approximation accuracy
-  \end{enumerate}
-\end{frame}
+
 
 \section{Distributed Multi-Robot Formation [ICRA 2014]}
 \subsection[Overview]{Overview}
-\begin{frame}{Related Work}{Formation using virtual force}
-   \begin{columns}[T] 
-    \begin{column}{.45\textwidth}
-      \scriptsize{W. Spears, D. Spears, J. Hamann and R. Heil, 2004}
-      \begin{figure}
-        \centering
-        \includegraphics[height=1in]{figs/spears1.png}
-      \end{figure}
-    \end{column}%
-    \begin{column}{.45\textwidth}
-      \scriptsize{I. Navarro, J. Pugh, A. Martinoli, and
-        F. Matia, 2008}
-      \begin{figure}
-        \centering
-        \includegraphics[height=1in]{figs/navarro.png}
-      \end{figure}      
-    \end{column}
-  \end{columns}
-  \vspace{3mm}
-  \begin{columns}[T] 
-    \begin{column}{.45\textwidth}
-      \begin{figure}
-        \centering
-        \includegraphics[height=1in]{figs/spears2.png}     
-      \end{figure}  
-    \end{column}%
-    \begin{column}{.45\textwidth}
-      \scriptsize{S. Prabhu, W. Li, J. McLurkin, 2012}
-      \begin{figure}
-        \centering
-        \includegraphics[height=1in]{figs/james.png}
-      \end{figure}
-    \end{column}
-  \end{columns}
-\end{frame}
+\input{frames/page24.tex}
 
-\begin{frame}{Motivation}{}
-  \textbf{Question: How to use one algorithm to generate
-      various (repeating) lattice pattern formations?}
-    \begin{columns}
-    \begin{column}{.45\textwidth}
-      \begin{figure}
-        \centering
-        \includegraphics[height=1.5in]{figs/tessellation2}
-      \end{figure}
-    \end{column}
-    \begin{column}{.45\textwidth}
-       \begin{figure}
-         \centering
-        \includegraphics[height=1.5in]{figs/tessellation1}
-      \end{figure}
-    \end{column}
-  \end{columns} 
-\end{frame}
+\input{frames/page25.tex}
+
+\input{frames/page26.tex}
 
 
-%%%%%%%%%%%%%%%%
-\begin{frame}{Robot Model}{}
-  \begin{columns}[T] % align columns
-    \begin{column}{.55\textwidth}
-      \begin{itemize}
-      \item Differential drive robots
-      \item Each robot has a unique \textbf{ID}
-      %\item Use a vector $p = [x, y,
-       % \theta]^T$ to represent robot's \textbf{pose}
-      \item Each robot has a \textbf{range} within which it can
-        sense and communicate with other robots
-      \item Each robot gets \textbf{observation} of its neighbors'
-        IDs and relative poses in its body frame
-      \end{itemize}
-    \end{column}%
-    % right column
-    \begin{column}{.45\textwidth}
-        \input{tikzfigs/robotmodel.tex}
-    \end{column}%
-  \end{columns}
-\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection[Lattice Graph]{Lattice Graph}
 % definition of lattice graph
-\begin{frame}{Input: Lattice Graph}
-  \begin{definition}
-    A \textbf{lattice graph} is a strongly connected directed
-      multi-graph in which each edge $e$ is labeled with a rigid body
-      transformation $T(e)$ and each $\edge{v}{T(e)}{w}$ has an
-      inverse edge $\edge{w}{T(e)^{-1}}{v}$.  
-    \end{definition}
-    \begin{columns}[T] % align columns
-      \begin{column}{.45\textwidth}
-        \input{tikzfigs/sqlg.tex}
-      \end{column}%
-      \begin{column}{.45\textwidth}
-        \begin{figure}
-          \centering
-          \includegraphics[scale=1]{figs/squarelattice}
-        \end{figure}
-      \end{column}%
-    \end{columns}
-\end{frame}
+
+\input{frames/page27.tex}
+
+\input{frames/page28.tex}
+
+\input{frames/page29.tex}
+
+\input{frames/page30.tex}
 
 
-\begin{frame}{Self-Consistent Lattice Graph}
-  \begin{definition}
-    \small{Given a range $\phi > 0$, call a lattice graph
-      \textit{self-consistent} for this range if, for any two paths with the
-      same starting node,
-      $$\lgpath{v}{T(e_v^{k})}{T(e_m^{w})}{w}, \text{ and }\lgpath{v}{T(e_v^{j})}{T(e_n^{u})}{u},$$
-      for which the distance between two ending nodes $w$ and $u$ is
-      less than or equal to $\phi$, there exist edges between $w$ and
-      $u$ with right transformations.}
-  \end{definition}
-  \begin{columns}[T] % align columns
-    \begin{column}{.45\textwidth}
-        \input{tikzfigs/selfconsist.tex}
-    \end{column}%
-    \begin{column}{.45\textwidth}
-        \input{tikzfigs/nonselfconsist.tex}
-    \end{column}%
-  \end{columns}
-\end{frame}
-
-% \begin{frame}{Simulation Example}{Square formation with 10 robots} 
-%   \begin{center}
-%   \includemovie[toolbar, poster, autoplay]{6cm}{6cm}{videos/square10.mp4}
-%   \end{center}
-% \end{frame}
-
-\begin{frame}{Role Function}
-  \begin{definition}
-    \small{Given a lattice graph $G=(V, E)$ and a set of robots $R = \{
-    r_1, \ldots, r_n \}$, $R$ \textbf{satisfies} $G$ if
-    there exists a role function $f: R \rightarrow V$ that preserves
-    the neighborhood structure of $G$.
-    \\
-    Specifically, for any $i$ and $j$, if $r_i$ and $r_j$ are neighbors, 
-    there must exist an edge
-    $e_{v}^w: \edge{f(r_i)}{}{f(r_j)}$ in $E$, such that
-    $ T(r_j) = T(r_i) T(e_{v}^w)$.}
-  \end{definition}
-  \input{tikzfigs/satisfy.tex}
-\end{frame}
-
-\begin{frame}{Evaluation Criteria}
-  \small{\begin{itemize}
-  \item \textbf{Efficiency}\\
-    %\begin{definition}
-    Call a robot $r_i$ \textbf{static} at time $t$ if its pose $p_i$
-    remains the same at all future times.
-   % $$p_i(t') = p_i(t) \quad \mbox {for all } t' > t$$    
-  %\end{definition}
-    Define the \textbf{execution time} $\bar{t}$ of the system as the
-    smallest time when all the robots reach static positions
-  \item \textbf{Quality} \\
-    When all robots reach static positions, for a robot $r_i$ with
-    $N_i$ neighbors and $E_i$ outgoing edges, define a non-fulfillment
-    ratio $\Gamma$ to measure the overall lattice quality
-    $$\Gamma = \dfrac{1}{n}\sum\limits_{i=1}^n \frac{E_i - N_i}{E_i}$$
-  \end{itemize}
-  }
-  \begin{columns}[T] 
-    \begin{column}{.4\textwidth}
-        \input{tikzfigs/hexlg.tex}
-    \end{column}%
-    \begin{column}{.5\textwidth}
-      \begin{figure}
-        \centering
-        \includegraphics[width=0.6\linewidth]{figs/bad-hexagon}
-      \end{figure}
-      \begin{figure}
-        \centering
-        \includegraphics[scale=0.65]{figs/good-hexagon}
-      \end{figure}
-    \end{column}%
-  \end{columns}
-\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection[Algorithm]{Algorithm}
-\begin{frame}{Algorithm}
-  \textbf{General Description}
-  \begin{columns}[T] % align columns
-   \begin{column}{.45\textwidth}
-     Robot broadcasts message containing its
-     \begin{itemize}
-     \item \textcolor{red}{authority} 
-     \item \textcolor{red}{matching}
-     \end{itemize}
+\input{frames/page31.tex}
 
-     \begin{enumerate}
-     \item Form tree structure
-     \item Select roles
-     \item Local task assignment
-     \item Make movement decision
-     \end{enumerate}
-    \end{column}%
-    \begin{column}{.45\textwidth}
-      \input{tikzfigs/algoanimate.tex}
-    \end{column}%
-  \end{columns}
-\end{frame}
-%%%%%%%%%%%%%%%%
+
 \subsubsection[Algorithm: Authority]{Authority Tree}
-\begin{frame}{Authority}{Level of Importance}
-  \textbf{Define authority and comparison operator}
-  \begin{definition}
-    \small{An \textbf{authority} is an ordered list of robot IDs
-      $$(\id_1, \ldots, \id_k)$$
-      The first ID in the list, $\id_1$ is called the \textbf{root} ID.
-      The final ID in the list, $\id_k$ is called the \textbf{sender} ID.}
-  \end{definition}
-  \begin{definition}
-    \small{Authority $A_2$ is \textbf{higher than} $A_1$ if:}
-    \begin{itemize}
-    \item \small{root ID of $A_2 >$ root ID of $A_1$, or}
-    \item \small{length of $A_2 <$  length of $A_1$ if they have the same root, or}
-    \item \small{sender ID of $A_2 >$ sender ID of $A_1$ if they have the same root and length}
-    \end{itemize}
-  \end{definition}
-\end{frame}
-%%%%%%%%%%%%%%%%
-\begin{frame}{1.Construct Authority Tree}{Decide to be root or descendant}
-  \textbf{Key Idea:} Each robot forms an authority containing only its
-  own ID, compares it with the authorities of remaining messages. The
-  robots use these authorities to establish a collection of authority
-  trees
-  \begin{columns}[T] % align columns
-    \begin{column}{.45\textwidth}
-      \begin{itemize}
-      \item {\textcolor{red}{Root}: Robot who has the highest authority}
-      \item {\textcolor{blue}{Descendant}: Robot selects the neighbor who sends
-          the highest authority and has matching with it as its parent}
-      \item {\textcolor{orange}{Orphan}: Robot who has no matching}
-      \end{itemize}  
-      \footnotesize{[right] Assume each robot has maximum $2$ outgoing
-        edges.}
-    \end{column}%
-    \begin{column}{.5\textwidth}
-       \input{tikzfigs/authtree.tex}
-    \end{column}
-  \end{columns}
-\end{frame}
-%%%%%%%%%%%%%%%%
+
+\input{frames/page32.tex}
+
+\input{frames/page33.tex}
 
 \subsubsection[Algorithm: Task Assignment]{Task Assignment}
-\begin{frame}{Matching}{}
-  \begin{definition}    
-    \small{A \textbf{matching} for a robot is a function $\eta : \{\id(r_a),
-      \id(r_b), \ldots \} \rightarrow \{\emptyset,e_{u}^v, e_{u}^w,
-      \ldots\} $ that associates each neighbor ID with either a lattice
-      graph edge from its role vertex or with the null value
-      $\emptyset$.}
-  \end{definition}
-  \begin{center}
-    \input{tikzfigs/matching.tex}
-  \end{center}
-\end{frame}
 
-\begin{frame}{2. Local Task Assignment}{Hungarain Algorithm}
-  To compute an optimal matching of a robot with $N$ neighbors and $E$
-  out-going edges of its role in the lattice graph, define a weight
-  matrix of size $\min(N,E) \times E$ and apply
-  \textcolor{scred}{Hungarian Algorithm} (Harold W. Kuhn, 1955).
-    \begin{columns}[T] % align columns
-      \begin{column}{.45\textwidth}
-        \begin{enumerate}
-        \item \small{Each row corresponds to a neighbor}
-        \item \small{Each column corresponds to an out-going edge of robot's role}
-        \item \small{The entries of the matrix are the Euclidean distance
-          between current position of each neighbor and the desired
-          position if matched with a lattice graph edge}
-        \end{enumerate}
-      \end{column}%
-      \begin{column}{.45\textwidth}
-        \vspace{3mm}
-        \input{tikzfigs/taskassign.tex}
-        \vspace{3mm}
-        \begin{flushleft}
-          \footnotesize{5 neighbors, 4 out-going edges.}
-        \end{flushleft}
-      \end{column}%
-    \end{columns}
-\end{frame}
+\input{frames/page34.tex}
+
+\input{frames/page35.tex}
 
 
-%%%%%%%%%%%%%%%%
 \subsubsection[Algorithm: Motion]{Motion Strategy}
-\begin{frame}{3. Robot Movement Strategy}{}
-  \input{tikzfigs/moving.tex}
-\end{frame}
-%%%%%%%%%%%%%%%%
-\begin{frame}{Bounded Movement}{}
-  \textbf{Goal: Keep descendant stay in the range of its parent}
-    \begin{columns}[T] % align columns
-      \begin{column}{.5\textwidth}
-        \begin{itemize}
-        \item \small{Descendant can reach anywhere in set $P$
-            (\textcolor{blue}{blue circle}) at next stage}
-        \item \small{Descendant is guaranteed to be observed in set $O$
-            (\textcolor{red}{Red circle}) by its parent at next stage}
-        \item \small{The real destination for descendant is the closest point
-            on the boundary of the intersection ($O\cap P$) to the
-            assigned destination}
-        \end{itemize}
-      \end{column}%
-      \begin{column}{.4\textwidth}
-        \input{tikzfigs/motion.tex}     
-      \end{column}%
-    \end{columns} 
-\end{frame}
 
+\input{frames/page36.tex}
+
+\input{frames/page37.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-
-
 \subsection{Conclusions}
-\begin{frame}{Conclusions}
-  We propose a novel distributed algorithm for the multi-robot formation
-  problem. 
-  \begin{enumerate}
-  \item Determine the prerequisites of applying our algorithm
-  \item Prove the correctness of our algorithm 
-  \item Improve the algorithm performance
-  \item Conduct experiments to test various lattice patterns
-  \end{enumerate}
 
-\end{frame}
+\input{frames/page38.tex}
+
 %%%%%%%%%%%%%%%%
 \end{document}

@@ -1,0 +1,25 @@
+\begin{frame}{2. Local Task Assignment}{Hungarain Algorithm}
+  To compute an optimal matching of a robot with $N$ neighbors and $E$
+  out-going edges of its role in the lattice graph, define a weight
+  matrix of size $\min(N,E) \times E$ and apply
+  \textcolor{scred}{Hungarian Algorithm} (Harold W. Kuhn, 1955).
+    \begin{columns}[T] % align columns
+      \begin{column}{.45\textwidth}
+        \begin{enumerate}
+        \item \small{Each row corresponds to a neighbor}
+        \item \small{Each column corresponds to an out-going edge of robot's role}
+        \item \small{The entries of the matrix are the Euclidean distance
+          between current position of each neighbor and the desired
+          position if matched with a lattice graph edge}
+        \end{enumerate}
+      \end{column}%
+      \begin{column}{.45\textwidth}
+        \vspace{3mm}
+        \input{tikzfigs/taskassign.tex}
+        \vspace{3mm}
+        \begin{flushleft}
+          \footnotesize{5 neighbors, 4 out-going edges.}
+        \end{flushleft}
+      \end{column}%
+    \end{columns}
+\end{frame}
