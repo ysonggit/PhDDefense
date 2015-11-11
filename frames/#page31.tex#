@@ -1,0 +1,21 @@
+\begin{frame}{Algorithm}
+  \textbf{General Description}
+  \begin{columns}[T] % align columns
+   \begin{column}{.45\textwidth}
+     Robot broadcasts message containing its
+     \begin{itemize}
+     \item \textcolor{red}{authority} 
+     \item \textcolor{red}{matching}
+     \end{itemize}
+
+     \begin{enumerate}
+     \item Form tree structure and select roles
+     \item Local task assignment
+     \item Make movement decision
+     \end{enumerate}
+    \end{column}%
+    \begin{column}{.45\textwidth}
+      \input{tikzfigs/algoanimate.tex}
+    \end{column}%
+  \end{columns}
+\end{frame}
