@@ -8,12 +8,50 @@
       less than or equal to $\phi$, there exist edges between $w$ and
       $u$ with right transformations.}
   \end{definition}
-  \begin{columns}[T] % align columns
-    \begin{column}{.45\textwidth}
-        \input{tikzfigs/selfconsist.tex}
-    \end{column}%
-    \begin{column}{.45\textwidth}
-        \input{tikzfigs/nonselfconsist.tex}
-    \end{column}%
-  \end{columns}
+  \only<1>{
+    \begin{columns}[T] % align columns
+      \begin{column}{.45\textwidth}
+        %\input{tikzfigs/selfconsist.tex}
+        \centering
+        \begin{figure}
+          \begin{tikzpicture}[->,>=stealth',node distance=2cm]
+            \tikzstyle{every state}=[fill=red!50,draw=none]
+            \node[state, scale=0.5] (A)    {$0$};
+            \path (A) edge [loop right] node {\footnotesize{(1, 0, $45^\circ$)}} (A)
+            edge [loop left] node {} (A); %{\footnotesize{(-1,0,$45^\circ$)}} (A);
+          \end{tikzpicture}
+        \end{figure}
+        Self-consistent Lattice Graph
+      \end{column}%
+      \begin{column}{.45\textwidth}
+        %\input{tikzfigs/nonselfconsist.tex}
+        \begin{figure}
+          \includegraphics[width=0.5\columnwidth]{figs/octagon}
+        \end{figure}
+      \end{column}%
+    \end{columns}
+  }
+  \only<2>{
+    \begin{columns}[T] % align columns
+      \begin{column}{.45\textwidth}
+        %\input{tikzfigs/selfconsist.tex}
+        \centering
+        \begin{figure}
+          \begin{tikzpicture}[->,>=stealth',node distance=2cm]
+            \tikzstyle{every state}=[fill=red!50,draw=none]
+            \node[state, scale=0.5] (A)    {$0$};
+            \path (A) edge [loop right] node {\footnotesize{(1, 0, $45\sqrt{2}^\circ$)}} (A)
+            edge [loop left] node {} (A); %{\footnotesize{(-1,0,$45^\circ$)}} (A);
+          \end{tikzpicture}
+        \end{figure}
+        Non-self-consistent Lattice Graph
+      \end{column}%
+      \begin{column}{.45\textwidth}
+        %\input{tikzfigs/nonselfconsist.tex}
+        \begin{figure}
+          \includegraphics[width=0.5\columnwidth]{figs/swirl}
+        \end{figure}
+      \end{column}%
+    \end{columns}
+  }
 \end{frame}
