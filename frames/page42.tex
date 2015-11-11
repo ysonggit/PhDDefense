@@ -1,19 +1,13 @@
-\begin{frame}{Correctness}
-  \begin{theorem}
-    Given a set of robots $R =\{r_1, \ldots, r_n\}$, if the
-    communication graph is initially connected, robots will reach
-    positions satisfying the input lattice graph with bounded-time steps.
-  \end{theorem}
-  \begin{proof}
-    For the relocate robot $r_i$, the time it needs to reach a vacancy: 
-    \begin{equation*}
-      \begin{split}
-        T_i & = T_{\textrm{timeout}} + T_{\textrm{drive}} + T_{\textrm{wait}}  \\
-        & \leq O(n)+ i\phi/v + \phi(n-i-1)/v \\
-        & \leq O(n) + (n-1)\phi/v\\
-        & = O(n).
-      \end{split}
-    \end{equation*}
-    The total algorithm execution time for the robots to reach desired formation is $O(n^2)$.
-  \end{proof}
+\begin{frame}{Summary}
+  \begin{enumerate}
+  \item Execution time for the new
+    algorithm scales quadratically as the number of robots increases.
+  \item Proved bounded execution time.
+  \item Deterministic formation quality, always better than old algorithm.
+  \end{enumerate}
+  Discussions
+  \begin{enumerate}
+  \item Only one robot relocate to one vacancy.
+  \item Lack of error-tolerance.
+  \end{enumerate}
 \end{frame}

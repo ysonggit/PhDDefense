@@ -1,10 +1,15 @@
-\begin{frame}{Frame Title}
-   \begin{columns}[T] % align columns
-     \begin{column}{.45\textwidth}
-         
-     \end{column}%
-     \begin{column}{.45\textwidth}
-        
-     \end{column}%
-   \end{columns}
+\begin{frame}{Spanning Tree Construction}
+\small{During the communication process, each robot computes its message and construct a spanning tree. We set a \emph{Communication Timeout} for all robots to reach consensus.}
+  \begin{definition}
+    The \textbf{communication timeout} is the number of time steps that the robot
+    needs to wait before it is confident about the principal information from the
+    incoming messages.
+  \end{definition}
+  \input{tikzfigs/spanningtree.tex}
+  %% \begin{columns}[T] % align columns
+  %%   \begin{column}{.45\textwidth}      
+  %%   \end{column}%
+  %%   \begin{column}{.45\textwidth}
+  %%   \end{column}%
+  %% \end{columns}
 \end{frame}

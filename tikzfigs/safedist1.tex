@@ -1,0 +1,76 @@
+\centering
+\begin{tikzpicture}[scale=0.65]
+  \tikzstyle{ann} = [fill=white,font=\footnotesize,inner sep=1pt]
+  % \useasboundingbox (1,0.5) rectangle (5.5,5);
+  % center 2.875 2.75
+  \coordinate (S) at (2.875, 2.75);
+  \def\offset{0.5}
+  \draw[fill=orange] (2.75,2.92) -- (3.25,2.75) -- (2.75,2.58) -- (2.875,2.75) -- cycle;
+  \node[color=blue] at (2.875, 2.75-\offset) {$r_3$};
+  \node[color=orange] at (3,3.75) {$\B_3$}; 
+  % vacancy
+  \def\dx{1.5}
+  \def\ddx{2}
+  \def\dddx{4.5}
+  \coordinate (I) at (2.875+\ddx,2.75);
+  \coordinate (C) at (2.875+\dddx,2.75);
+  % \draw[color=blue] (3-\dx,2.92) -- (2.5-\dx,2.75) -- (3-\dx,2.58) -- (2.875-\dx,2.75) -- cycle;
+  %\draw[fill=red] (3+\ddx,2.92) -- (2.5+\ddx,2.75) -- (3+\ddx,2.58) -- (2.875+\ddx,2.75) -- cycle;
+  \draw[fill=red] (4.875, 3.125) -- (4.705,2.625) -- (4.875, 2.75) -- (5.045,2.625) -- cycle; 
+  \node[color=blue] at (4.875+\offset, 2.75-\offset) {$r_4$};
+  \draw[fill=teal] (3+\dddx,2.92) -- (2.5+\dddx,2.75) -- (3+\dddx,2.58) -- (2.875+\dddx,2.75) -- cycle;
+  \node[color=blue] at (7.375, 2.75-\offset) {$r_2$};
+  \draw[dotted] (I) -- (S);
+  \draw[dotted] (I) -- (C);
+
+  \def\rd{4}
+  \coordinate (R3) at (4.875, 4.25);
+  %\draw[fill=orange] (1.5,4.5) -- (1.33,4) -- (1.5,4.125) -- (1.67,4) -- cycle; % center .5 4.125
+  \draw[fill=blue] (4.875, 0.625+\rd) -- (4.705,0.125+\rd) -- (R3) -- (5.045,0.125+\rd) -- cycle; 
+  \node[color=blue] at (4.875+\offset, 4.25) {$r_6$};
+  
+  \draw[color=blue] (4.875, 5.625) -- (4.705,5.125) -- (4.875,5.25) -- (5.045,5.125) -- cycle; 
+  \draw[dotted] (I) -- (4.875,5.25);
+
+  \def\safedist{1.2}
+  \def\circleSafeI {(I) circle (\safedist)}
+  %\draw[color=red] \circleSafeI;
+  \def\movedist{1.7}
+  \def\circleMoveC {(C) circle (\movedist)}
+  \def\circleMoveS {(S) circle (\movedist)}
+  \draw[color=teal] \circleMoveC;
+  \draw[color=orange] \circleMoveS;
+  % radius of circleMoveC
+  \draw[dashed,line width=.5pt] (7.375, 2.75-\movedist) -- (7.375+\movedist,2.75-\movedist);
+  \draw[dashed,line width=.5pt] (7.375+\movedist, 2.75) -- (7.375, 2.75);
+  \draw[arrows=<->,line width=.5pt] (7.375+\movedist,2.75-\movedist) -- (7.375+\movedist,2.75);
+  \node[ann] at (8.5,2) {$\range-v\dt$};
+  \coordinate (Cu) at (7.375, 3+\movedist);
+  \coordinate (Iu) at (4.875, 3+\movedist);
+  \draw[dashed, line width=.5pt] (C) -- (Cu);
+  \draw[dashed, line width=.5pt] (I) -- (Iu);
+  \draw[arrows=<->, line width=.5pt] (Cu) -- (Iu);
+  \node[ann] at (6, 3+\movedist) {$\range$};
+  \coordinate (Id) at (4.875, 2.5-\movedist);
+  \coordinate (M) at (4.875+\safedist, 2.75);
+  \coordinate (Md) at (4.875+\safedist, 2.5-\movedist);
+  \draw[dashed, line width=.5pt] (I) -- (Id);
+  \draw[dashed, line width=.5pt] (M) -- (Md);
+  \coordinate (Id2) at (4.875, 2.75-\movedist);
+  \coordinate (Md2) at (4.875+\safedist, 2.75-\movedist);
+  \draw[arrows=<->, line width=.5pt] (Id2) -- (Md2);
+  \node[ann] at (5.5, 2.75-\movedist) {$d_s$};
+  %%%%
+  % \def\parentCircle {(S) circle (\movedist)}
+  % \draw[color=blue] \parentCircle;
+  % \node[color=blue] at (3,3.75) {$\B_s$};
+  \node[color=teal] at (8,3.75) {$\B_2$}; 
+  %%%%           
+  %% \coordinate (X) at (3.5-\dx, 2.75);
+  %% \coordinate (Xd) at (3.5-\dx,2.75-\movedist);
+  %% \draw[arrows=<->, line width=.5pt] (X) -- (Xd);
+  %% \node[ann] at (1.75,2) {$\range-v\dt$};
+  %% \coordinate (Sd) at (2.875, 2.75-\movedist);
+  %% \draw[dashed,line width=.5pt] (Xd) -- (Sd);
+  %% \draw[dashed,line width=.5pt] (S) -- (X);
+\end{tikzpicture}

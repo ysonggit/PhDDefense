@@ -1,10 +1,24 @@
 \begin{frame}{No Child Left Behind}
-   \begin{columns}[T] % align columns
-     \begin{column}{.45\textwidth}
-         
-     \end{column}%
-     \begin{column}{.45\textwidth}
-        
-     \end{column}%
-   \end{columns}
+  %% \small{\textbf{Idea: use bounded movement strategy to maintain parent-child relationship in the spanning tree.}
+  %% }
+  \begin{theorem}
+   The motion strategy guarantees the connectivity of the communication graph.
+  \end{theorem}
+  \begin{columns}[T] % align columns
+    \begin{column}{.45\textwidth}
+      \begin{itemize}
+      \item Only the relocate robot and its descendants (if any) move
+      \item Moving robot, if has any descendant, only moves to where it guarantees to stay within the bounded range of each of its children.
+      \item Moving robot, if is a descendant of another moving robot, moves close enough (safe distance $d_s$) to its parent 
+      \end{itemize}
+    \end{column}%
+    \begin{column}{.45\textwidth}
+      \only<1>{
+        \input{tikzfigs/safedist1.tex}
+      }
+      \only<2>{
+        \input{tikzfigs/safedist2.tex}
+      }
+    \end{column}%
+  \end{columns}
 \end{frame}

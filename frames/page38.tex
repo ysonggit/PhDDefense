@@ -1,14 +1,18 @@
 \begin{frame}{Algorithm Description}
+  \textbf{\small{Key: Sequentially drives a robot in a decreasing order of their IDs to a vacancy until no more unstable robots.}}
   \begin{columns}[T] % align columns
     \begin{column}{.5\textwidth}
       \small{
         Robot broadcasts message containing:
         \begin{itemize}
         \item \textcolor{blue}{HighestID} 
-        \item \textcolor{blue}{RootID}: HighestID among all Stable, Vacancy
+        \item \textcolor{blue}{Root}: HighestID among all Stable, Vacancy
         \item \textcolor{purple}{Vacancy}
-        \item \textcolor{green}{RelocateID}: HighestID among all Unstable 
-        \item \textcolor{orange}{Subtree}: is a successor of RelocateID
+        \item \textcolor{green}{Relocate}: HighestID among all Unstable 
+        \item \textcolor{orange}{Subtree}: if decendant of Relocate
+        \item Parent 
+        \item Path to Root
+        \item Path to Relocate
         \end{itemize}
       }
       %% \begin{enumerate}
