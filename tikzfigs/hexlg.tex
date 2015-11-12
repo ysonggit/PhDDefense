@@ -1,10 +1,9 @@
 \begin{figure}
   \centering
-  \begin{tikzpicture}[distance=1cm]
-    %->,>=stealth',shorten >=5pt,auto,node          ]
+  \begin{tikzpicture}[->,>=stealth',shorten >=5pt,auto,node distance=1cm]         
     \tikzstyle{every state}=[fill=myred, draw=none, text=white]
-    \node[state, scale=0.5] (A) at (0,0)    {$0$};
-    \node[state, scale=0.5, fill=mycyan] (B) at (3,0)  {$1$};
+    \node[state, scale=0.7] (A) at (0,0)    {$0$};
+    \node[state, scale=0.7, fill=blue] (B) at (3,0)  {$1$};
     \path (A) edge [bend left=10] node {\scriptsize{Tr(0, 40)}} (B)
     (A) edge [bend left=45] node {\scriptsize{Tr(-35,-20)}} (B)
     (A) edge [bend left=90] node {\scriptsize{Tr(35,-20)}} (B)

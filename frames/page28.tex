@@ -15,18 +15,18 @@
         \centering
         \begin{figure}
           \begin{tikzpicture}[->,>=stealth',node distance=2cm]
-            \tikzstyle{every state}=[fill=red!50,draw=none]
-            \node[state, scale=0.5] (A)    {$0$};
+            \tikzstyle{every state}=[fill=myred, text=white,draw=none]
+            \node[state, scale=0.7] (A)    {$0$};
             \path (A) edge [loop right] node {\footnotesize{(1, 0, $45^\circ$)}} (A)
             edge [loop left] node {} (A); %{\footnotesize{(-1,0,$45^\circ$)}} (A);
           \end{tikzpicture}
         \end{figure}
-        Self-consistent Lattice Graph
+        \small{Self-consistent Lattice Graph}
       \end{column}%
       \begin{column}{.45\textwidth}
         %\input{tikzfigs/nonselfconsist.tex}
         \begin{figure}
-          \includegraphics[width=0.5\columnwidth]{figs/octagon}
+          \includegraphics[width=0.45\columnwidth]{figs/octagon}
         \end{figure}
       \end{column}%
     \end{columns}
@@ -38,18 +38,18 @@
         \centering
         \begin{figure}
           \begin{tikzpicture}[->,>=stealth',node distance=2cm]
-            \tikzstyle{every state}=[fill=red!50,draw=none]
-            \node[state, scale=0.5] (A)    {$0$};
+            \tikzstyle{every state}=[fill=myred, text=white, draw=none]
+            \node[state, scale=0.7] (A)    {$0$};
             \path (A) edge [loop right] node {\footnotesize{(1, 0, $45\sqrt{2}^\circ$)}} (A)
             edge [loop left] node {} (A); %{\footnotesize{(-1,0,$45^\circ$)}} (A);
           \end{tikzpicture}
         \end{figure}
-        Non-self-consistent Lattice Graph
+        \small{Non-self-consistent Lattice Graph}
       \end{column}%
       \begin{column}{.45\textwidth}
         %\input{tikzfigs/nonselfconsist.tex}
         \begin{figure}
-          \includegraphics[width=0.5\columnwidth]{figs/swirl}
+          \includegraphics[width=0.45\columnwidth]{figs/swirl}
         \end{figure}
       \end{column}%
     \end{columns}
