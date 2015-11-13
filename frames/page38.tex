@@ -1,18 +1,20 @@
 \begin{frame}{Scheduling-based Algorithm}
   \textbf{\small{Key: Sequentially drives a robot in a decreasing order of their IDs to a vacancy until no more un-scheduled robots.}}
   \begin{columns}[T] % align columns
-    \begin{column}{.5\textwidth}
+    \begin{column}{.55\textwidth}
       \small{
         Robot broadcasts message containing:
         \begin{itemize}
-        \item \textcolor{blue}{HighestID} 
-        \item \textcolor{blue}{Root}: HighestID among all Stable, Vacancy
+        \item Robot ID
+        \item \textcolor{blue}{Stable}
+        \item \textcolor{blue}{Highest ID} 
+        \item \textcolor{blue}{Root}: Highest ID among all Stable, Vacancy
         \item \textcolor{purple}{Vacancy}
-        \item \textcolor{green}{Relocate}: HighestID among all Unstable 
+        \item \textcolor{green}{Relocate}: Highest ID among all Unstable
         \item \textcolor{orange}{Subtree}: if a descendant of the Relocate
-        \item Parent 
-        \item Path to Root
-        \item Path to Relocate
+        \item Parent ID
+        \item Shortest Path from Root
+        \item Shortest Path from Relocate 
         \end{itemize}
       }
       %% \begin{enumerate}
@@ -22,7 +24,7 @@
       %% \item Relocate Robot becomes \textcolor{blue}{stable} after reaching destination
       %% \end{enumerate}
     \end{column}%
-    \begin{column}{.4\textwidth}
+    \begin{column}{.35\textwidth}
       \input{tikzfigs/newalgoanimate.tex}
     \end{column}%
   \end{columns}
