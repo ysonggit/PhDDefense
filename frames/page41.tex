@@ -8,8 +8,8 @@
     \small{For the relocate robot $r_i$, the time it needs to reach a vacancy: 
     \begin{equation*}
       \begin{split}
-        T_i & = T_{\textrm{timeout}} + T_{\textrm{drive}} + T_{\textrm{wait}}  \\
-        & \leq O(n)+ i\phi/v + \phi(n-i-1)/v \\
+        T_i & = T_{\textrm{timeout}} + T_{\textrm{wait} + T_{\textrm{drive}} }  \\
+        & \leq O(n) + \phi(n-i-1)/v + i\phi/v  \\
         & \leq O(n) + (n-1)\phi/v\\
         & = O(n).
       \end{split}
