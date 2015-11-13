@@ -2,13 +2,13 @@
   \begin{theorem}
     Given a set of robots, if the
     communication graph is initially connected, robots will reach
-    positions satisfying the input lattice graph with bounded-time steps.
+    positions satisfying the input lattice graph with bounded time.
   \end{theorem}
   \begin{proof}
     \small{For the relocate robot $r_i$, the time it needs to reach a vacancy: 
     \begin{equation*}
       \begin{split}
-        T_i & = T_{\textrm{timeout}} + T_{\textrm{wait} + T_{\textrm{drive}} }  \\
+        T_i & = T_{\textrm{timeout}} + T_{\textrm{wait}} + T_{\textrm{drive}} \\
         & \leq O(n) + \phi(n-i-1)/v + i\phi/v  \\
         & \leq O(n) + (n-1)\phi/v\\
         & = O(n).
